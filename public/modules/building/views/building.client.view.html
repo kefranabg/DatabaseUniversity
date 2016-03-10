@@ -1,0 +1,45 @@
+<section ng-controller="BuildingController" data-ng-init="getBuilding()" layout="row" layout-align="center">
+    <div class="layout-padding" flex-gt-sm="80" flex-xs="100">
+        <div layout="row" style="min-height: 100px">
+            <h1>
+                Building Administration
+            </h1>
+            <span flex></span>
+            <md-button ng-show="selected.length === 0" ng-click="showCreateBuilding()">
+                <i class="material-icons md-36">add</i>
+                <md-tooltip>
+                    Add Building
+                </md-tooltip>
+            </md-button>
+            <md-input-container ng-show="selected.length === 0" class="md-block">
+                <label>Search...</label>
+                <input ng-model="query.search">
+            </md-input-container>
+            <md-button ng-show="selected.length > 0" ng-click="deleteBuilding()">
+                <i class="material-icons md-36">delete</i>
+                <md-tooltip>
+                    Delete selected buildings
+                </md-tooltip>
+            </md-button>
+        </div>
+        <p ng-show="error !== ''">{{error}}</p>
+        <md-table-container>
+            <table md-table md-row-select ng-model="selected" md-progress="promise">
+                <thead md-head md-on-reorder="onReorder">
+                <tr md-row>
+                    <th md-column md-order-by="latitude">Building Name</th>
+                    <th md-column md-order-by="latitude">Building Latitude</th>
+                    <th md-column md-order-by="longitude">Building Longitude</th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row md-select="building" ng-click="showEditBuilding($event, building)"  md-select-id="{{building.idBuilding}}" ng-repeat="building in building | orderBy:query.predicate:query.reverse | filter:query.search | limitTo: query.limit: (query.page - 1) * query.limit">
+                    <td md-cell>{{building.name}}</td>
+                    <td md-cell>{{building.latitude}}</td>
+                    <td md-cell>{{building.longitude}}</td>
+                </tbody>
+            </table>
+        </md-table-container>
+        <md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{building.length}}" md-options="query.rowPerPage" md-page-select></md-table-pagination>
+    </div>
+</section>

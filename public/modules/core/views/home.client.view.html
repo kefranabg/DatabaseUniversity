@@ -1,0 +1,7 @@
+<section ng-controller="HomeController" layout="column">
+    <div layout="row" layout-align="center" layout-padding>
+        <youtube-video video-url="urlVideo"></youtube-video>
+    </div>
+    <h1 layout="row" layout-align="center" layout-padding>Average Time : {{averageTimeVideo | secondsToDateTime | date:'HH:mm:ss'}}</h1>
+    <h1 layout="row" layout-align="center" layout-padding>Video completed {{nbCompleted}} times</h1>
+</section>

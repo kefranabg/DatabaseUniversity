@@ -1,0 +1,27 @@
+<md-dialog>
+    <md-content class="md-padding">
+        <h1>Room edition</h1>
+        <div layout="row">
+            <md-input-container class="md-block">
+                <label>Number</label>
+                <input ng-model="room.number">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Seats Available</label>
+                <input ng-model="room.availableSeats">
+            </md-input-container>
+        </div>
+        <md-input-container class="md-block">
+            <label>Building Id</label>
+            <input ng-model="room.Building_idBuilding">
+        </md-input-container>
+        <md-dialog-actions layout-align="center" layout="row">
+            <md-button layout-align="center center" ng-click="cancel()" style="margin-right:20px;" flex>
+                Cancel
+            </md-button>
+            <md-button layout-align="center center" ng-click="confirmSave()" flex>
+                Ok
+            </md-button>
+        </md-dialog-actions>
+    </md-content>
+</md-dialog>

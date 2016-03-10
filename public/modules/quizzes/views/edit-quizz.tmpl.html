@@ -1,0 +1,33 @@
+<md-dialog>
+    <md-content class="md-padding">
+        <h1>Quizz edition</h1>
+        <div layout="row">
+            <md-input-container class="md-block">
+                <label>Name</label>
+                <input ng-model="quizz.name">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Topic</label>
+                <input ng-model="quizz.topic">
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container>
+                <label>Courses</label>
+                <md-select ng-model="quizz.courseId">
+                    <md-option ng-repeat="course in courses" value="{{course.courseId}}">
+                        {{course.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <md-dialog-actions layout-align="center" layout="row">
+            <md-button layout-align="center center" ng-click="cancel()" style="margin-right:20px;" flex>
+                Cancel
+            </md-button>
+            <md-button layout-align="center center" ng-click="confirmSave()" flex>
+                Ok
+            </md-button>
+        </md-dialog-actions>
+    </md-content>
+</md-dialog>

@@ -1,0 +1,43 @@
+<md-dialog>
+    <md-content class="md-padding">
+        <h1>Course edition</h1>
+        <div layout="row">
+            <md-input-container class="md-block">
+                <label>Name</label>
+                <input ng-model="course.name">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Max Seats</label>
+                <input ng-model="course.maxSeats">
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-input-container class="md-block">
+                <label>Type</label>
+                <input ng-model="course.type">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Level</label>
+                <input ng-model="course.level">
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container>
+                <label>Professors</label>
+                <md-select ng-model="course.Professor_professorId">
+                    <md-option ng-repeat="professor in professors" value="{{professor.professorId}}">
+                        {{professor.firstName}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <md-dialog-actions layout-align="center" layout="row">
+            <md-button layout-align="center center" ng-click="cancel()" style="margin-right:20px;" flex>
+                Cancel
+            </md-button>
+            <md-button layout-align="center center" ng-click="confirmSave()" flex>
+                Ok
+            </md-button>
+        </md-dialog-actions>
+    </md-content>
+</md-dialog>

@@ -1,0 +1,130 @@
+<md-dialog style="min-width: 800px;">
+    <form>
+        <md-dialog-content style="max-width:800px;max-height:910px; ">
+            <md-tabs class="md-primary" md-dynamic-height md-border-bottom>
+                <md-tab label="Student edition">
+                    <md-content class="md-padding">
+                        <h1>Student edition</h1>
+
+                        <div layout="row">
+                            <md-input-container class="md-block" flex>
+                                <label>FirstName</label>
+                                <input ng-model="student.firstName">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex>
+                                <label>LastName</label>
+                                <input ng-model="student.lastName">
+                            </md-input-container>
+                        </div>
+                        <div layout="row">
+                            <md-input-container class="md-block" flex>
+                                <label>Country</label>
+                                <input ng-model="student.country">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex>
+                                <label>City</label>
+                                <input ng-model="student.city">
+                            </md-input-container>
+                        </div>
+                        <div layout="row">
+                            <div flex>
+                                <md-input-container class="md-block" >
+                                    <label>Zip Code</label>
+                                    <input ng-model="student.zipCode">
+                                </md-input-container>
+                            </div>
+                            <div flex>
+                                <md-input-container class="md-block" >
+                                    <label>Phone Number</label>
+                                    <input ng-model="student.phoneNumber">
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div layout="row">
+                            <md-input-container class="md-block" flex>
+                                <label>Major</label>
+                                <input ng-model="student.major">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex>
+                                <label>Email</label>
+                                <input ng-model="student.email">
+                            </md-input-container>
+                        </div>
+                        <div>
+                            <md-input-container class="md-block">
+                                <label>Street Adress</label>
+                                <input ng-model="student.streetAddress">
+                            </md-input-container>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab ng-if="student.idStudent" label="Student Grades">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Grades</h1>
+                        <md-table-container>
+                            <table md-table>
+                                <thead md-head md-on-reorder="onReorder">
+                                <tr md-row>
+                                    <th md-column>Quizz Name</th>
+                                    <th md-column>Score</th>
+                                </tr>
+                                </thead>
+                                <tbody md-body>
+                                <tr md-row   ng-repeat="grade in grades">
+                                    <td md-cell>{{grade.Quizz.name}}</td>
+                                    <td md-cell>{{grade.score}}</td>
+                                </tbody>
+                            </table>
+                        </md-table-container>
+                    </md-content>
+                </md-tab>
+                <md-tab ng-if="student.idStudent" label="Student Courses">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Courses</h1>
+                        <div ng-repeat="course in courses">
+                            <p>➔ {{course.Course.name}}</p>
+                        </div>
+                        <md-input-container>
+                            <label>Add Course</label>
+                            <md-select ng-model="selected">
+                                <md-option ng-repeat="course in allCourses" value="{{course}}">
+                                    {{course.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-button ng-click="addCourse(selected);">
+                            Add Course
+                        </md-button>
+                    </md-content>
+                </md-tab>
+                <md-tab ng-if="student.idStudent" label="Student Schedule">
+                    <md-table-container>
+                        <table md-table>
+                            <thead md-head md-on-reorder="onReorder">
+                            <tr md-row>
+                                <th md-column>Course</th>
+                                <th md-column>Start</th>
+                                <th md-column>End</th>
+                            </tr>
+                            </thead>
+                            <tbody md-body>
+                            <tr md-row ng-repeat="c in schedule">
+                                <td md-cell>{{c.Course.name}}</td>
+                                <td md-cell>{{c.startDate  | date:'medium'}}</td>
+                                <td md-cell>{{c.endDate  | date:'medium'}}</td>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+                </md-tab>
+            </md-tabs>
+            <md-dialog-actions layout-align="center" layout="row">
+                <md-button layout-align="center center" ng-click="cancel()" style="margin-right:20px;" flex>
+                    Cancel
+                </md-button>
+                <md-button layout-align="center center" ng-click="confirmSave()" flex>
+                    Ok
+                </md-button>
+            </md-dialog-actions>
+        </md-dialog-content>
+    </form>
+</md-dialog>

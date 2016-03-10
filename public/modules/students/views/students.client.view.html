@@ -1,0 +1,67 @@
+<section ng-controller="StudentsController" data-ng-init="getStudents(); getCourses();" layout="row" layout-align="center">
+    <div class="layout-padding" flex-gt-sm="80" flex-xs="100">
+        <div layout="row" style="min-height: 100px">
+            <h1>
+                Students Administration
+            </h1>
+            <span flex></span>
+            <md-button ng-show="selected.length === 0" ng-click="showCreateStudent()">
+                <i class="material-icons md-36">add</i>
+                <md-tooltip>
+                    Add Student
+                </md-tooltip>
+            </md-button>
+            <md-input-container ng-show="selected.length === 0" class="md-block">
+                <label>Search...</label>
+                <input ng-model="query.search">
+            </md-input-container>
+            <md-button ng-show="selected.length > 0" ng-click="deleteStudents()">
+                <i class="material-icons md-36">delete</i>
+                <md-tooltip>
+                    Delete selected students
+                </md-tooltip>
+            </md-button>
+        </div>
+        <p ng-show="error !== ''">{{error}}</p>
+        <div layout="row">
+            <md-input-container>
+                <label>Courses</label>
+                <md-select ng-model="selectedCourse">
+                    <md-option ng-repeat="course in courses" value="{{course.idCourse}}">
+                        {{course.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <md-table-container>
+            <table md-table md-row-select ng-model="selected" md-progress="promise">
+                <thead md-head md-on-reorder="onReorder">
+                <tr md-row>
+                    <th md-column md-order-by="idStudent">Id</th>
+                    <th md-column md-order-by="firstName">First Name</th>
+                    <th md-column md-order-by="lastName">Last Name</th>
+                    <th md-column md-order-by="zipCode">Zip Code</th>
+                    <th md-column md-order-by="country">Country</th>
+                    <th md-column md-order-by="city">City</th>
+                    <th md-column md-order-by="phoneNumber">Phone Number</th>
+                    <th md-column md-order-by="email">Email</th>
+                    <th md-column md-order-by="major">Major</th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row md-select="student" ng-click="showEditStudent($event, student)"  md-select-id="{{student.username}}" ng-repeat="student in students | orderBy:query.predicate:query.reverse | filter:query.search | limitTo: query.limit: (query.page - 1) * query.limit">
+                    <td md-cell>{{student.idStudent}}</td>
+                    <td md-cell>{{student.firstName}}</td>
+                    <td md-cell>{{student.lastName}}</td>
+                    <td md-cell>{{student.zipCode}}</td>
+                    <td md-cell>{{student.country}}</td>
+                    <td md-cell>{{student.city}}</td>
+                    <td md-cell>{{student.phoneNumber}}</td>
+                    <td md-cell>{{student.email}}</td>
+                    <td md-cell>{{student.major}}</td>
+                </tbody>
+            </table>
+        </md-table-container>
+        <md-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{students.length}}" md-options="query.rowPerPage" md-page-select></md-table-pagination>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+<md-dialog>
+    <md-content class="md-padding">
+        <h1>Assignement edition</h1>
+        <div layout="row">
+            <md-input-container class="md-block">
+                <label>Name</label>
+                <input ng-model="assignement.name">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Topic</label>
+                <input ng-model="assignement.topic">
+            </md-input-container>
+        </div>
+        <md-datepicker ng-model="assignement.dueTo" md-placeholder="Due date"></md-datepicker>
+        <md-input-container class="md-block">
+            <label>Schedule Id</label>
+            <input ng-model="assignement.Schedule_idSchedule">
+        </md-input-container>
+        <md-dialog-actions layout-align="center" layout="row">
+            <md-button layout-align="center center" ng-click="cancel()" style="margin-right:20px;" flex>
+                Cancel
+            </md-button>
+            <md-button layout-align="center center" ng-click="confirmSave()" flex>
+                Ok
+            </md-button>
+        </md-dialog-actions>
+    </md-content>
+</md-dialog>

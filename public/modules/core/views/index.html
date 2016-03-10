@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html ng-app="database">
+    <head>
+        <title>Database</title>
+        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+        <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body class="ng-cloak">
+
+        <div ng-controller="LayoutController">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <a href="/#/">
+                        <h2>
+                            <span>University Database</span>
+                        </h2>
+                    </a>
+                    <span flex></span>
+                    <md-menu style="width:120px; margin-right:15%;">
+                        <md-button class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)" style="width:120px;">
+                            <div>
+                                <i class="material-icons md-18" style="vertical-align: middle">dashboard</i>
+                                <span style="margin-left:10px; vertical-align: middle;">Column</span>
+                            </div>
+                        </md-button>
+                        <md-menu-content width="4">
+                            <md-menu-item>
+                                <md-button class="md-raised" href="/#/students">
+                                    <div>
+                                        <i class="material-icons md-18" style="vertical-align: middle;">face</i>
+                                        <span style="margin-left:10px; vertical-align: middle;">Students</span>
+                                    </div>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button class="md-raised" href="/#/professors">
+                                    <div>
+                                        <i class="material-icons md-18" style="vertical-align: middle">supervisor_account</i>
+                                        <span style="margin-left:10px; vertical-align: middle;">Professors</span>
+                                    </div>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button class="md-raised" href="/#/courses">
+                                    <div>
+                                        <i class="material-icons md-18" style="vertical-align: middle">school</i>
+                                        <span style="margin-left:10px; vertical-align: middle;">Courses</span>
+                                    </div>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button class="md-raised" href="/#/quizzes">
+                                    <div>
+                                        <i class="material-icons md-18" style="vertical-align: middle">book</i>
+                                        <span style="margin-left:10px; vertical-align: middle;">Quizzes</span>
+                                    </div>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button class="md-raised" href="/#/absence">
+                                    <div>
+                                        <i class="material-icons md-18" style="vertical-align: middle">alarm_off</i>
+                                        <span style="margin-left:10px; vertical-align: middle;">Absence</span>
+                                    </div>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button class="md-raised" href="/#/assignement">
+                                    <div>
+                                        <i class="material-icons md-18" style="vertical-align: middle">assignment</i>
+                                        <span style="margin-left:10px; vertical-align: middle;">Assignement</span>
+                                    </div>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button class="md-raised" href="/#/grade">
+                                    <div>
+                                        <i class="material-icons md-18" style="vertical-align: middle">grade</i>
+                                        <span style="margin-left:10px; vertical-align: middle;">Grade</span>
+                                    </div>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button class="md-raised" href="/#/room">
+                                    <div>
+                                        <i class="material-icons md-18" style="vertical-align: middle">room</i>
+                                        <span style="margin-left:10px; vertical-align: middle;">Room</span>
+                                    </div>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button class="md-raised" href="/#/building">
+                                    <div>
+                                        <i class="material-icons md-18" style="vertical-align: middle">account_balance</i>
+                                        <span style="margin-left:10px; vertical-align: middle;">Building</span>
+                                    </div>
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            </md-toolbar>
+            <data-ui-view></data-ui-view>
+        </div>
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script src="bower_components/angular-youtube-embed/dist/angular-youtube-embed.js"></script>
+        <script src="bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+        <script src="bower_components/angular-material/angular-material.min.js"></script>
+        <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+        <script src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+
+
+        <script src="config.js"></script>
+        <script src="application.js"></script>
+
+        <script src="modules/core/core.client.module.js"></script>
+        <script src="modules/core/controllers/home.client.controller.js"></script>
+        <script src="modules/core/controllers/layout.client.controller.js"></script>
+        <script src="modules/core/config/core.client.config.js"></script>
+        <script src="modules/students/students.client.module.js"></script>
+        <script src="modules/students/controllers/sutdents.client.controller.js"></script>
+        <script src="modules/students/config/students.client.config.js"></script>
+        <script src="modules/absence/absence.client.module.js"></script>
+        <script src="modules/absence/controllers/absence.client.controller.js"></script>
+        <script src="modules/absence/config/absence.client.config.js"></script>
+        <script src="modules/professors/professors.client.module.js"></script>
+        <script src="modules/professors/controllers/professors.client.controller.js"></script>
+        <script src="modules/professors/config/professors.client.config.js"></script>
+        <script src="modules/assignement/assignement.client.module.js"></script>
+        <script src="modules/assignement/controllers/assignement.client.controller.js"></script>
+        <script src="modules/assignement/config/assignement.client.config.js"></script>
+        <script src="modules/courses/courses.client.module.js"></script>
+        <script src="modules/courses/controllers/courses.client.controller.js"></script>
+        <script src="modules/courses/config/courses.client.config.js"></script>
+        <script src="modules/grade/grade.client.module.js"></script>
+        <script src="modules/grade/controllers/grade.client.controller.js"></script>
+        <script src="modules/grade/config/grade.client.config.js"></script>
+        <script src="modules/quizzes/quizzes.client.module.js"></script>
+        <script src="modules/quizzes/controllers/quizzes.client.controller.js"></script>
+        <script src="modules/quizzes/config/quizzes.client.config.js"></script>
+        <script src="modules/room/room.client.module.js"></script>
+        <script src="modules/room/controllers/room.client.controller.js"></script>
+        <script src="modules/room/config/room.client.config.js"></script>
+        <script src="modules/building/building.client.module.js"></script>
+        <script src="modules/building/controllers/building.client.controller.js"></script>
+        <script src="modules/building/config/building.client.config.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<md-dialog>
+    <md-content class="md-padding">
+        <h1>Grade edition</h1>
+        <div layout="row">
+            <!--<md-input-container class="md-block">
+                <label>Quizz Id</label>
+                <input ng-model="grade.Quizz_idQuizz">
+            </md-input-container>-->
+            <md-input-container class="md-block">
+                <label>Score</label>
+                <input ng-model="grade.score">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Student Id</label>
+                <input ng-model="grade.Student_idStudent">
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container>
+                <label>Courses</label>
+                <md-select ng-model="selectedCourse">
+                    <md-option ng-repeat="course in courses" value="{{course.idCourse}}">
+                        {{course.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div>
+            <md-input-container ng-if="selectedCourse != null">
+                <label>Quizzes</label>
+                <md-select ng-model="grade.Quizz_idQuizz">
+                    <md-option ng-repeat="quizz in quizzes" value="{{quizz.idQuizz}}">
+                        {{quizz.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <md-dialog-actions layout-align="center" layout="row">
+            <md-button layout-align="center center" ng-click="cancel()" style="margin-right:20px;" flex>
+                Cancel
+            </md-button>
+            <md-button layout-align="center center" ng-click="confirmSave()" flex>
+                Ok
+            </md-button>
+        </md-dialog-actions>
+    </md-content>
+</md-dialog>
